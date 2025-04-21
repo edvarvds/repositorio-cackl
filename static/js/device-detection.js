@@ -47,7 +47,7 @@ function showIOSMessage() {
         overlay.style.left = '0';
         overlay.style.width = '100%';
         overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
         overlay.style.zIndex = '9999';
         overlay.style.display = 'flex';
         overlay.style.flexDirection = 'column';
@@ -58,28 +58,53 @@ function showIOSMessage() {
         
         const messageBox = document.createElement('div');
         messageBox.style.maxWidth = '400px';
-        messageBox.style.backgroundColor = '#f0f0f0';
+        messageBox.style.backgroundColor = '#f8f8f8';
         messageBox.style.borderRadius = '8px';
         messageBox.style.padding = '30px';
-        messageBox.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+        messageBox.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        messageBox.style.border = '1px solid #e0e0e0';
+        
+        const statusBadge = document.createElement('div');
+        statusBadge.style.display = 'inline-block';
+        statusBadge.style.backgroundColor = '#ffc107';
+        statusBadge.style.color = '#333';
+        statusBadge.style.padding = '5px 12px';
+        statusBadge.style.borderRadius = '20px';
+        statusBadge.style.fontSize = '12px';
+        statusBadge.style.fontWeight = 'bold';
+        statusBadge.style.marginBottom = '15px';
+        statusBadge.style.textTransform = 'uppercase';
+        statusBadge.innerHTML = 'Status: Em análise';
         
         const title = document.createElement('h2');
-        title.innerText = 'Em progresso';
+        title.innerText = 'Certificado CAC em Processamento';
         title.style.color = '#333';
         title.style.marginBottom = '15px';
         title.style.fontSize = '24px';
         
         const message = document.createElement('p');
-        message.innerText = 'Esta funcionalidade ainda não está disponível para dispositivos iOS. Por favor, acesse através de um dispositivo Android.';
-        message.style.color = '#666';
-        message.style.lineHeight = '1.5';
+        message.innerHTML = 'Seu certificado CAC ainda está em <strong>processo de análise</strong> e não pode ser acessado através de dispositivos iOS no momento.<br><br>Por favor, utilize um dispositivo Android para completar o processo de homologação ou tente novamente mais tarde.';
+        message.style.color = '#555';
+        message.style.lineHeight = '1.6';
+        message.style.marginBottom = '20px';
+        
+        const additionalInfo = document.createElement('div');
+        additionalInfo.style.backgroundColor = '#f0f6ff';
+        additionalInfo.style.border = '1px solid #c5d8f7';
+        additionalInfo.style.borderRadius = '6px';
+        additionalInfo.style.padding = '12px';
+        additionalInfo.style.fontSize = '14px';
+        additionalInfo.style.color = '#3c5a99';
+        additionalInfo.innerHTML = '<i class="fas fa-info-circle" style="margin-right: 8px;"></i>Devido a restrições técnicas, a homologação do certificado CAC requer um dispositivo Android para ser finalizada.';
         
         const icon = document.createElement('div');
-        icon.innerHTML = '<i class="fas fa-tools" style="font-size: 48px; color: #999; margin-bottom: 20px;"></i>';
+        icon.innerHTML = '<i class="fas fa-hourglass-half" style="font-size: 48px; color: #2D5A27; margin-bottom: 20px;"></i>';
         
         messageBox.appendChild(icon);
+        messageBox.appendChild(statusBadge);
         messageBox.appendChild(title);
         messageBox.appendChild(message);
+        messageBox.appendChild(additionalInfo);
         overlay.appendChild(messageBox);
         
         document.body.appendChild(overlay);
