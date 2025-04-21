@@ -2,9 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Log para verificar que o script está sendo carregado
     console.log('Script main.js carregado');
     
-    const cpfForm = document.getElementById('cpfForm');
+    const cpfForm = document.getElementById('cpf-form');
     const consultaForm = document.getElementById('consultaForm');
     const certificadoAprovado = document.getElementById('certificadoAprovado');
+    
+    // Se não encontrar o formulário, encerra a execução
+    if (!cpfForm) {
+        console.log('Formulário CPF não encontrado');
+        return;
+    }
+    
     const errorMessage = document.createElement('div');
     errorMessage.className = 'mt-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700 hidden';
     
